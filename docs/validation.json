@@ -1,0 +1,111 @@
+{
+  "layouts": [
+    {
+      "viewport": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 375,
+      "scrollWidth": 375,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    },
+    {
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "overflow": [],
+      "heading": 1,
+      "images": true
+    }
+  ],
+  "errors": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:4173/pagina-ausente",
+      "status": 404
+    }
+  ],
+  "contrasts": [
+    {
+      "label": "Grafite sobre coral",
+      "ratio": 5.5
+    },
+    {
+      "label": "Coral escuro sobre neutro da marca",
+      "ratio": 4.88
+    },
+    {
+      "label": "Texto secundário sobre neutro da marca",
+      "ratio": 5.81
+    },
+    {
+      "label": "Texto de apoio sobre branco",
+      "ratio": 6.22
+    },
+    {
+      "label": "Branco sobre coral escuro",
+      "ratio": 5.23
+    },
+    {
+      "label": "Marfim sobre grafite",
+      "ratio": 13.57
+    }
+  ],
+  "zoom": {
+    "viewport": 1440,
+    "bodyRight": 1440,
+    "heading": 744
+  },
+  "redesign": {
+    "noDecorativeArrows": true,
+    "localTargetsValid": true,
+    "logo": {
+      "naturalWidth": 150,
+      "width": 72,
+      "src": "/assets/vivace-logo-original.png"
+    },
+    "motionStarted": true,
+    "reducedMotion": true,
+    "touchMenu": true
+  },
+  "checks": [
+    "Menu em todas as larguras mobile: abertura, Escape, foco e navegação",
+    "Link para pular ao conteúdo",
+    "Movimento reduzido",
+    "404 com status correto e retorno",
+    "Conteúdo e navegação sem JavaScript"
+  ],
+  "timestamp": "2026-10-14T16:08:26.842Z"
+}
