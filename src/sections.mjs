@@ -44,8 +44,8 @@ export function firstVisitSection() {
   return '<section class="first-visit-section" id="primeira-aula" aria-labelledby="first-title"><div class="container first-layout">'+
     '<div class="first-heading"><h2 id="first-title">'+escape(data.title)+'</h2><p>'+escape(data.intro)+'</p>'+
     '<a class="text-link" href="#contato">Ver os canais de contato</a></div>'+
-    '<ol class="first-steps">'+data.steps.map((step,index)=>'<li class="guide-step" data-guide-step><span class="step-number" aria-hidden="true">'+String(index+1).padStart(2,'0')+'</span>'+
-      '<div><h3>'+escape(step.title)+'</h3><p>'+escape(step.description)+'</p></div></li>').join('')+'</ol></div></section>';
+    '<ol class="first-steps">'+data.steps.map((step,index)=>'<li class="guide-step" data-guide-step><details class="guide-details"><summary><span class="step-number" aria-hidden="true">'+String(index+1).padStart(2,'0')+'</span>'+
+      '<h3>'+escape(step.title)+'</h3></summary><div class="guide-answer"><p>'+escape(step.description)+'</p></div></details></li>').join('')+'</ol></div></section>';
 }
 export function faqSection() {
   if(!site.faq.length)return '';

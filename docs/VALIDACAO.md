@@ -30,3 +30,7 @@ Evidências: [JSON](validation.json), [desktop completo](screenshots/desktop-144
 Pesquisa, origem das fotos e entrega: [relatório completo](EVOLUCAO_VISUAL.md).
 
 Sem auditoria completa WCAG, leitor de tela, Lighthouse ou publicação externa. Lint e TypeScript não estão configurados.
+
+## Ajuste da seção Antes da primeira aula
+
+Os três passos passam a iniciar recolhidos e expandir por clique, Enter, Espaço ou toque. Controles nativos details/summary continuam funcionais sem JavaScript. Verificado em 320, 390, 768, 1240 e 1440 px, sem overflow ou erros de JavaScript; movimento reduzido respeitado. Capturas em screenshots/first-visit-expandable-1240.png e screenshots/first-visit-expandable-390.png.

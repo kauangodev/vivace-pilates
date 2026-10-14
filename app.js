@@ -57,9 +57,9 @@
     animate(element,[{opacity:.8,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,delay:80});
     animate(element.querySelector('img'),[{transform:'scale(1.03)'},{transform:'scale(1)'}],{duration:900,delay:80});
   });
-  document.querySelectorAll('.faq details, .service-details').forEach(details=>{
+  document.querySelectorAll('.faq details, .service-details, .guide-details').forEach(details=>{
     details.addEventListener('toggle',()=>{
-      if(details.open)animate(details.querySelector('.faq-answer, .details-content'),
+      if(details.open)animate(details.querySelector('.faq-answer, .details-content, .guide-answer'),
         [{opacity:.65,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:240});
     });
   });
