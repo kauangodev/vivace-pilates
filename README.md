@@ -4,6 +4,8 @@ Prévia institucional com direção editorial, seis fotografias, serviços detal
 
 Etapa atual: [motion e responsividade](docs/MOTION_RESPONSIVO.md), na branch `codex/motion-responsivo`, com composições por dispositivo, 60 alvos de entrada e variantes de imagem de 1000 px.
 
+Demonstração publicada: **[vivace-pilates.vercel.app](https://vivace-pilates.vercel.app/)**. Repositório: [kauangodev/vivace-pilates](https://github.com/kauangodev/vivace-pilates). Veja [resultado, testes e pendência da integração automática](docs/PUBLICACAO.md).
+
 ## Execução e edição
 
 - `node scripts/preview.mjs`: gera o build e serve http://127.0.0.1:4173.

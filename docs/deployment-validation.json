@@ -1,0 +1,30 @@
+{
+  "url": "https://vivace-pilates.vercel.app",
+  "deployment": "dpl_2FndagRfiX3QZkBFdnhvDqQ6nd5C",
+  "sourceCommit": "7d8bd79",
+  "publicWithoutLogin": true,
+  "checks": [
+    {
+      "width": 390,
+      "count": 8,
+      "broken": 0,
+      "overflow": false,
+      "menu": "passed",
+      "details": "passed",
+      "gallery": "passed",
+      "whatsapp": "confirmed",
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "count": 8,
+      "broken": 0,
+      "overflow": false,
+      "menu": "desktop",
+      "details": "passed",
+      "gallery": "passed",
+      "whatsapp": "confirmed",
+      "pageErrors": []
+    }
+  ]
+}
