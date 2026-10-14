@@ -1,0 +1,7 @@
+.git
+.vercel
+.env*
+node_modules
+dist
+docs
+PROMPT_MASTER_VIVACE_REVISADO.md
