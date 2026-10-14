@@ -5,6 +5,3 @@ dist/
 *.log
 
 docs/references/
-
-.vercel
-.env*
