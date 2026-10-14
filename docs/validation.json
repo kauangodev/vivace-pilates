@@ -81,6 +81,14 @@
     {
       "label": "Marfim sobre grafite",
       "ratio": 13.57
+    },
+    {
+      "label": "Texto sobre pêssego",
+      "ratio": 5.21
+    },
+    {
+      "label": "Passo ativo sobre pêssego",
+      "ratio": 6.54
     }
   ],
   "zoom": {
@@ -100,6 +108,22 @@
     "reducedMotion": true,
     "touchMenu": true
   },
+  "enrichment": {
+    "officialServicesVisible": true,
+    "addressAndMapVerified": true,
+    "whatsappDestinationVerified": true,
+    "instagramOfficial": true,
+    "firstVisitSteps": 3,
+    "nativeFaqWithAndWithoutJs": true,
+    "noUnconfirmedFreeTrial": true,
+    "externalResourceRequests": 0,
+    "diagnostic": {
+      "lcpMilliseconds": 140,
+      "cls": 0,
+      "resourceBytes": 151799,
+      "context": "Chromium local, sem limitação de rede; valores de diagnóstico, não métricas de campo"
+    }
+  },
   "checks": [
     "Menu em todas as larguras mobile: abertura, Escape, foco e navegação",
     "Link para pular ao conteúdo",
@@ -107,5 +131,5 @@
     "404 com status correto e retorno",
     "Conteúdo e navegação sem JavaScript"
   ],
-  "timestamp": "2026-10-14T16:08:26.842Z"
+  "timestamp": "2026-10-14T16:52:50.402Z"
 }

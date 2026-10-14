@@ -60,7 +60,7 @@ assert.equal(await noJs.locator('h1').isVisible(),true);
 await noJs.locator('#main-nav').getByRole('link',{name:'A Vivace',exact:true}).click();
 assert.equal(new URL(noJs.url()).hash,'#vivace');
 function luminance(hex){const values=hex.match(/\w\w/g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return values[0]*.2126+values[1]*.7152+values[2]*.0722;}
-const contrasts=[['Grafite sobre coral','242a2d','f27f53'],['Coral escuro sobre neutro da marca','b94823','f7f7f7'],['Texto secundário sobre neutro da marca','596269','f7f7f7'],['Texto de apoio sobre branco','596269','ffffff'],['Branco sobre coral escuro','ffffff','b94823'],['Marfim sobre grafite','f7f7f7','242a2d']].map(([label,fg,bg])=>{const a=luminance(fg),b=luminance(bg);return {label,ratio:Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2))};});
+const contrasts=[['Grafite sobre coral','242a2d','f27f53'],['Coral escuro sobre neutro da marca','b94823','f7f7f7'],['Texto secundário sobre neutro da marca','596269','f7f7f7'],['Texto de apoio sobre branco','596269','ffffff'],['Branco sobre coral escuro','ffffff','b94823'],['Marfim sobre grafite','f7f7f7','242a2d'],['Texto sobre pêssego','596269','fce7dc'],['Passo ativo sobre pêssego','8f3519','fce7dc']].map(([label,fg,bg])=>{const a=luminance(fg),b=luminance(bg);return {label,ratio:Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2))};});
 assert.equal(contrasts.every(c=>c.ratio>=4.5),true,'Contraste de texto abaixo de 4.5:1');
 await page.setViewportSize({width:1440,height:1000});
 await page.goto(base,{waitUntil:'networkidle'});
@@ -101,13 +101,61 @@ assert.equal(new URL(touchPage.url()).hash,'#contato');
 assert.equal(await touchPage.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
 const redesign={noDecorativeArrows:true,localTargetsValid:localTargets,logo,motionStarted,reducedMotion:true,touchMenu:true};
 
-const result={layouts,errors,responses,contrasts,zoom,redesign,checks:['Menu em todas as larguras mobile: abertura, Escape, foco e navegação','Link para pular ao conteúdo','Movimento reduzido','404 com status correto e retorno','Conteúdo e navegação sem JavaScript'],timestamp:new Date().toISOString()};
+
+// Verificações de conteúdo e conversão adicionados nesta branch.
+await page.goto(base,{waitUntil:'networkidle'});
+const whatsapp=await page.locator('.hero .button').getAttribute('href');
+const whatsappUrl=new URL(whatsapp);
+assert.equal(whatsappUrl.host,'wa.me');
+assert.equal(whatsappUrl.pathname,'/5531996906333');
+assert.equal(whatsappUrl.searchParams.get('text'),'Olá! Conheci a Vivace pelo site e gostaria de saber mais sobre as aulas de Pilates e os horários disponíveis.');
+assert.equal(await page.locator('.contact-details a[href="https://www.instagram.com/vivace.igarape/"]').count(),1);
+assert.equal(await page.locator('[data-guide-step]').count(),3);
+assert.equal(await page.locator('.other-services').innerText().then(text=>text.includes('Fisioterapia pélvica e ortopédica')&&text.includes('LPF')),true);
+const mapUrl=new URL(await page.getByRole('link',{name:'Ver localização',exact:true}).getAttribute('href'));
+assert.equal(mapUrl.hostname,'www.google.com');
+assert.equal(mapUrl.searchParams.get('query').includes('Primeiro de Maio, 555'),true);
+assert.equal(await page.locator('.contact-details address').innerText().then(text=>text.includes('Centro, Igarapé, MG')),true);
+assert.equal(await page.locator('.care-points article').count(),3);
+assert.equal(await page.locator('.faq details').count(),3);
+const firstQuestion=page.locator('.faq details').first();
+await firstQuestion.locator('summary').focus();
+await page.keyboard.press('Enter');
+assert.equal(await firstQuestion.evaluate(e=>e.open),true);
+assert.equal(await firstQuestion.locator('.faq-answer').isVisible(),true);
+await page.keyboard.press('Enter');
+assert.equal(await firstQuestion.evaluate(e=>e.open),false);
+assert.equal(await page.locator('body').innerText().then(text=>text.includes('aula experimental gratuita')),false);
+assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow');
+const noJsQuestion=noJs.locator('.faq details').first();
+await noJsQuestion.locator('summary').click();
+assert.equal(await noJsQuestion.evaluate(e=>e.open),true);
+
+const diagnosticPage=await browser.newPage();
+const network=[];
+diagnosticPage.on('request',request=>network.push(request.url()));
+await diagnosticPage.addInitScript(()=>{
+  window.vivaceVitals={lcp:null,cls:0};
+  new PerformanceObserver(list=>{const entries=list.getEntries();window.vivaceVitals.lcp=entries[entries.length-1].startTime;}).observe({type:'largest-contentful-paint',buffered:true});
+  new PerformanceObserver(list=>{for(const entry of list.getEntries())if(!entry.hadRecentInput)window.vivaceVitals.cls+=entry.value;}).observe({type:'layout-shift',buffered:true});
+});
+await diagnosticPage.setViewportSize({width:390,height:844});
+await diagnosticPage.goto(base,{waitUntil:'networkidle'});
+await diagnosticPage.evaluate(()=>document.fonts.ready);
+await diagnosticPage.locator('.hero-photo img').waitFor({state:'visible'});
+await diagnosticPage.evaluate(async()=>{await Promise.all(document.getAnimations().map(animation=>animation.finished.catch(()=>{})));await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
+const diagnostic=await diagnosticPage.evaluate(()=>({
+  lcpMilliseconds:window.vivaceVitals.lcp,
+  cls:window.vivaceVitals.cls,
+  resourceBytes:performance.getEntriesByType('resource').reduce((sum,r)=>sum+r.encodedBodySize,0),
+  context:'Chromium local, sem limitação de rede; valores de diagnóstico, não métricas de campo'
+}));
+assert.equal(network.every(url=>url.startsWith(base)),true,'Há carga automática de terceiros');
+const enrichment={officialServicesVisible:true,addressAndMapVerified:true,whatsappDestinationVerified:true,instagramOfficial:true,firstVisitSteps:3,nativeFaqWithAndWithoutJs:true,noUnconfirmedFreeTrial:true,externalResourceRequests:0,diagnostic};
+
+const result={layouts,errors,responses,contrasts,zoom,redesign,enrichment,checks:['Menu em todas as larguras mobile: abertura, Escape, foco e navegação','Link para pular ao conteúdo','Movimento reduzido','404 com status correto e retorno','Conteúdo e navegação sem JavaScript'],timestamp:new Date().toISOString()};
 await writeFile('docs/validation.json',JSON.stringify(result,null,2));
 console.log(JSON.stringify(result,null,2));
 await browser.close();
 assert.equal(errors.length,0);
 assert.equal(layouts.every(l=>l.scrollWidth<=l.viewport+1),true,'Há overflow horizontal');
-
-
-
-

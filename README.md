@@ -9,7 +9,7 @@ Prévia institucional com direção editorial, logo original, títulos em Archiv
 - Após editar, rode o build e recarregue a preview. Não há hot reload.
 - `npm run dev` e `npm run build` são equivalentes quando npm estiver disponível.
 - Node.js 20+ recomendado. Sem dependências de aplicação.
-- Edite os dados em `content/site.mjs`, componentes em `src/components.mjs`, composição e metadados em `src/render.mjs`, tokens em `styles.css` e comportamento em `app.js`.
+- Edite os dados em `content/site.mjs`, componentes em `src/components.mjs` e `src/sections.mjs`, composição e metadados em `src/render.mjs`, tokens em `styles.css` e comportamento em `app.js`.
 - Não edite os HTML gerados: o build os sobrescreve.
 - `heroLines` define as quebras editoriais do título; mantenha o significado alinhado a `heroTitle`.
 
@@ -23,7 +23,7 @@ Limitação: o PNG pequeno possui artefatos e não permite recuperar detalhes pe
 
 ## Conteúdo
 
-Nome e cidade têm como fonte os briefings do usuário. Textos atuais são propostas editoriais. Contato, endereço, horários, modalidades, diferenciais, oferta experimental, equipe e depoimentos continuam pendentes.
+Nome e cidade têm como fonte os briefings do usuário. Textos atuais são propostas editoriais. WhatsApp e Instagram foram confirmados pelo usuário. Serviços e endereço têm fontes oficiais registradas. Horários, valores, condições da primeira aula, perfis profissionais e depoimentos continuam pendentes. As informações institucionais derivadas da pesquisa ainda precisam de aprovação editorial final.
 
 `null` e listas vazias significam dados ausentes; seções condicionais ficam omitidas. Não adicione placeholders públicos. `contact.whatsapp` deve conter apenas o número internacional confirmado, sem sinais ou espaços. `whatsappLink` centraliza a mensagem; os CTAs de contato surgem no build apenas com canal real.
 
@@ -39,7 +39,7 @@ Conteúdo educativo conferido no material [The Key Principles of the Pilates Met
 
 `vercel.json` preserva o build estático e a saída `dist/`. Preview possui noindex no HTML, robots.txt bloqueado e headers noindex. O servidor local aplica noindex sempre. Rotas desconhecidas têm página e status 404 reais.
 
-Para produção: aprovar conteúdo, confirmar contato e domínio HTTPS, substituir a foto ilustrativa por material autorizado e revisar os headers da Vercel. Só então definir `VIVACE_ENV=production`. O build recusa produção se persistirem pendências essenciais ou headers que bloqueiem indexação. Não há canonical/sitemap com domínio fictício.
+Para produção: aprovar conteúdo e confirmar domínio HTTPS, substituir a foto ilustrativa por material autorizado e revisar os headers da Vercel. Só então definir `VIVACE_ENV=production`. O build recusa produção se persistirem pendências essenciais ou headers que bloqueiem indexação. Não há canonical/sitemap com domínio fictício.
 
 Não houve deploy externo neste redesign. Não foram adicionados CMS, banco, autenticação, formulário, analytics ou cookies.
 
@@ -47,4 +47,6 @@ Não houve deploy externo neste redesign. Não foram adicionados CMS, banco, aut
 
 `node scripts/validate.mjs` executa testes com o Playwright do runtime local. Para outro computador, instalar Playwright e adaptar o caminho documentado no script. A ferramenta não faz parte do site publicado.
 
-Resultados em `docs/validation.json`, relatório em `docs/VALIDACAO.md` e capturas em `docs/screenshots/`. Resumo do redesign em `docs/REDESIGN.md`. Não há configuração de lint nem TypeScript neste projeto.
+Resultados em `docs/validation.json`, relatório em `docs/VALIDACAO.md` e capturas em `docs/screenshots/`. Histórico do redesign em `docs/REDESIGN.md`; pesquisa e enriquecimento em `docs/ENRIQUECIMENTO.md`. Não há configuração de lint nem TypeScript neste projeto.
+
+Pesquisa e origens: `content/research.mjs`. A branch `codex/conteudo-experiencia` preserva a versão anterior na main para comparação. Não publique candidates/withheld como dados institucionais.

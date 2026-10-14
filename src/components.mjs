@@ -2,7 +2,7 @@ import {site, whatsappLink} from '../content/site.mjs';
 
 export const escape = text => String(text).replace(/[&<>"']/g, char =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const nav = [['inicio','Início'],['vivace','A Vivace'],['pilates','Pilates'],['contato','Contato']];
+const nav = [['inicio','Início'],['vivace','A Vivace'],['pilates','Pilates'],['primeira-aula','Primeira aula'],['contato','Contato']];
 export const contactUrl = () => whatsappLink(site.contact.whatsapp) || site.contact.instagram;
 
 export function brand(home='/#inicio') {
@@ -16,7 +16,7 @@ export function header({notFound=false}={}) {
     '<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>'+
     '<nav class="nav" id="main-nav" aria-label="Navegação principal">'+nav.map(([id,label])=>
       '<a href="'+prefix+'#'+id+'">'+label+'</a>').join('')+
-    (url?'<a class="button small" href="'+escape(url)+'">Falar com a equipe</a>':'')+'</nav></div></header>';
+    (url?'<a class="button small" href="'+escape(url)+'">WhatsApp</a>':'')+'</nav></div></header>';
 }
 export function footer({production=false}={}) {
   return '<footer class="footer"><div class="container footer-top">'+brand()+
@@ -27,7 +27,7 @@ export function footer({production=false}={}) {
 export function photo() {
   const p=site.photography;
   const large=p.large ? ', '+p.large+' 2200w' : '';
-  return '<figure class="hero-photo"><div class="photo-window"><img src="'+p.src+'" srcset="'+p.small+' 700w, '+p.src+' 1400w'+large+
+  return '<figure class="hero-photo"><div class="photo-window" data-image-intro><img src="'+p.src+'" srcset="'+p.small+' 700w, '+p.src+' 1400w'+large+
     '" sizes="(max-width:767px) calc(100vw - 40px), (min-width:1600px) 1440px, 90vw" width="'+p.width+'" height="'+p.height+
     '" alt="'+escape(p.alt)+'" fetchpriority="high" decoding="async"></div><figcaption><span>'+
     (p.status==='autorizada'?'':'Fotografia ilustrativa. Não representa o espaço da Vivace.')+
@@ -37,10 +37,11 @@ export function contactSection() {
   const url=contactUrl();
   return '<section class="contact-section" id="contato" aria-labelledby="contact-title"><div class="container contact-layout">'+
     '<div class="contact-copy" data-reveal><h2 id="contact-title">'+escape(site.copy.contactTitle)+'</h2>'+
-    (url?'<p>Para saber mais sobre as aulas e consultar horários, fale com a equipe.</p><a class="button" href="'+escape(url)+'">Falar com a equipe</a><p class="contact-note">O contato inicia uma conversa. O agendamento depende de confirmação.</p>':
-      '<p class="contact-pending">O contato oficial da Vivace ainda precisa ser confirmado para esta prévia.</p>')+
+    (url?'<p>'+escape(site.copy.contactDescription)+'</p><a class="button" href="'+escape(url)+'">Falar com a equipe</a><p class="contact-note">Você iniciará uma conversa. Aguarde a confirmação da equipe para considerar o horário agendado.</p>':
+      '<p class="contact-pending">Contato oficial em confirmação.</p>')+
     '</div><div class="contact-details"><p class="location-city">'+escape(site.city)+'<span>Minas Gerais</span></p>'+
-    (site.contact.address?'<p>'+escape(site.contact.address)+'</p>':'')+
+    (site.contact.phoneDisplay?'<p class="contact-channel"><span>WhatsApp</span><a href="'+escape(url)+'">'+escape(site.contact.phoneDisplay)+'</a></p>':'')+
+    (site.contact.instagram?'<p class="contact-channel"><span>Instagram</span><a href="'+escape(site.contact.instagram)+'">@vivace.igarape</a></p>':'')+
+    (site.contact.address?'<address>'+escape(site.contact.address)+'</address><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(site.name+' '+site.contact.address)+'">Ver localização</a>':'')+
     (site.contact.hours?'<p>'+escape(site.contact.hours)+'</p>':'')+'</div></div></section>';
 }
-

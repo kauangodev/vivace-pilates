@@ -43,10 +43,41 @@
   }
 
   // O conteúdo fica visível antes, durante e sem a execução das animações.
-  document.querySelectorAll('[data-intro]').forEach(element=>
-    animate(element,[{opacity:.65,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:550}));
+  document.querySelectorAll('[data-intro]').forEach(element=>{
+    animate(element,[{opacity:.9},{opacity:1}],{duration:650});
+    const lines=element.querySelectorAll('.title-line');
+    lines.forEach((line,index)=>animate(line,
+      [{opacity:.65,transform:'translateY(16px)'},{opacity:1,transform:'translateY(0)'}],
+      {duration:650,delay:index*90}));
+  });
+  document.querySelectorAll('[data-image-intro]').forEach(element=>animate(element,
+    [{opacity:.85,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],
+    {duration:700,delay:80}));
+  document.querySelectorAll('.faq details').forEach(details=>{
+    details.addEventListener('toggle',()=>{
+      if(details.open)animate(details.querySelector('.faq-answer'),
+        [{opacity:.65,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:220});
+    });
+  });
 
   if('IntersectionObserver' in window){
+    const steps=[...document.querySelectorAll('[data-guide-step]')];
+    const visited=new WeakSet();
+    const stepReveal=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting||visited.has(entry.target))return;
+        visited.add(entry.target);
+        animate(entry.target,[{opacity:.7,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:480});
+        stepReveal.unobserve(entry.target);
+      });
+    },{threshold:.18});
+    const stepReading=new IntersectionObserver(entries=>{
+      const visible=entries.filter(entry=>entry.isIntersecting);
+      if(!visible.length)return;
+      const nearest=visible.sort((a,b)=>Math.abs(a.boundingClientRect.top+a.boundingClientRect.height/2-innerHeight/2)-Math.abs(b.boundingClientRect.top+b.boundingClientRect.height/2-innerHeight/2))[0];
+      steps.forEach(step=>step.toggleAttribute('data-current-step',step===nearest.target));
+    },{rootMargin:'-35% 0px -35% 0px'});
+    steps.forEach(step=>{stepReveal.observe(step);stepReading.observe(step);});
     const reveal=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(!entry.isIntersecting)return;

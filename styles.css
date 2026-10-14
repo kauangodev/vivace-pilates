@@ -291,3 +291,93 @@ h3 { font-size: clamp(28px, 3vw, 42px); letter-spacing: -.045em; }
 }
 
 
+
+/* Enriquecimento: informação institucional, primeira aula e dúvidas. */
+.hero-intro { max-width: 310px; }
+.hero-intro p { font-size: 17px; line-height: 1.7; }
+.about-body { color: #d4d7d8; font-size: 14px; line-height: 1.9; max-width: 520px; margin-bottom: 0; }
+.about-lead { margin-bottom: 24px; }
+.care-points {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+  margin-top: 64px; padding-top: 40px; border-top: 1px solid #60666a;
+}
+.care-points h3 { font-family: var(--body); font-size: 18px; font-weight: 600; letter-spacing: -.4px; line-height: 1.4; margin-bottom: 16px; }
+.care-points p { color: #d4d7d8; font-size: 13px; line-height: 1.8; margin-bottom: 0; max-width: 330px; }
+.institution-note { color: #d4d7d8; font-size: 10px; line-height: 1.8; margin: 32px 0 0; }
+.institution-note a, .educational-note a { text-decoration: underline; text-underline-offset: 3px; }
+.institution-note a:hover { color: var(--coral); }
+.educational-note a:hover { color: var(--coral-dark); }
+.first-visit-section { background: #fce7dc; padding-block: 104px; }
+.first-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 112px; align-items: start; }
+.first-heading { position: sticky; top: 128px; }
+.first-heading h2 { font-size: clamp(48px, 5vw, 76px); margin-bottom: 32px; max-width: 430px; }
+.first-heading > p { font-size: 15px; color: var(--secondary); max-width: 360px; line-height: 1.8; margin-bottom: 24px; }
+.first-steps { list-style: none; margin: 0; padding: 0; }
+.guide-step { display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 32px 0; border-top: 1px solid #bdaba0; }
+.guide-step:last-child { border-bottom: 1px solid #bdaba0; }
+.guide-step h3 { font-size: clamp(27px, 3vw, 38px); margin-bottom: 16px; }
+.guide-step p { font-size: 14px; color: var(--secondary); margin-bottom: 0; line-height: 1.8; max-width: 430px; }
+.step-number { color: var(--secondary); font-size: 12px; padding-top: 8px; transition: color 240ms; }
+.guide-step[data-current-step] .step-number { color: var(--focus); font-weight: 600; }
+.faq-section { background: white; padding-block: 104px; }
+.faq-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; align-items: start; }
+.faq-layout > h2 { font-size: clamp(48px, 5.5vw, 80px); margin: 0; }
+.faq { width: 100%; }
+.faq details { padding-block: 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary {
+  list-style: none; display: flex; justify-content: space-between; align-items: center;
+  gap: 24px; min-height: 72px; padding: 20px 0; font-size: 16px; font-weight: 400; line-height: 1.6;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font-size: 23px; font-family: var(--display); line-height: 1; flex-shrink: 0; }
+.faq details[open] summary::after { content: '−'; }
+.faq details[open] summary { color: var(--coral-dark); }
+.faq summary:hover { color: var(--coral-dark); }
+.faq-answer p { margin: 0; padding: 0 32px 24px 0; font-size: 14px; color: var(--secondary); line-height: 1.9; }
+.contact-copy h2 { font-size: clamp(56px, 6.6vw, 96px); }
+.contact-channel > span { display: block; color: var(--secondary); font-size: 10px; margin-bottom: 8px; }
+.contact-channel a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: 5px; font-size: 15px; }
+.contact-channel a:hover { color: var(--coral-dark); }
+.title-line, [data-reveal], [data-guide-step] { backface-visibility: hidden; }
+
+@media (max-width: 1100px) {
+  .first-layout { gap: 56px; grid-template-columns: .9fr 1.1fr; }
+  .faq-layout { gap: 56px; }
+  .care-points { gap: 32px; }
+}
+@media (max-width: 900px) {
+  .hero-intro { max-width: none; }
+  .hero-intro p { max-width: 420px; font-size: 16px; }
+}
+@media (max-width: 767px) {
+  .hero-intro p { max-width: 400px; font-size: 15px; }
+  .header[data-menu-open] .nav { max-height: calc(100svh - 110px); overflow-y: auto; }
+  .care-points { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; padding-top: 32px; }
+  .care-points h3 { font-size: 18px; margin-bottom: 12px; }
+  .care-points p { max-width: 440px; }
+  .about-body { font-size: 13px; }
+  .institution-note { font-size: 10px; }
+  .first-visit-section { padding-block: 64px; }
+  .first-layout { grid-template-columns: 1fr; gap: 40px; }
+  .first-heading { position: static; }
+  .first-heading h2 { font-size: 50px; max-width: 360px; margin-bottom: 24px; }
+  .first-heading > p { font-size: 14px; }
+  .guide-step { grid-template-columns: 28px 1fr; gap: 16px; padding-block: 24px; }
+  .guide-step h3 { font-size: 29px; }
+  .guide-step p { font-size: 13px; }
+  .step-number { font-size: 11px; }
+  .faq-section { padding-block: 64px; }
+  .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+  .faq-layout > h2 { font-size: 50px; }
+  .faq summary { min-height: 64px; font-size: 14px; padding-block: 16px; }
+  .faq-answer p { font-size: 13px; padding-right: 0; }
+  .contact-copy h2 { font-size: clamp(52px, 14vw, 72px); }
+  .contact-details > p:not(.location-city) { margin-top: 24px; }
+}
+
+.other-services { border-top: 1px solid #60666a; padding-top: 24px; margin-top: 28px; }
+.other-services > p { color: #d4d7d8; font-size: 12px; margin-bottom: 12px; }
+.other-services ul { list-style: none; padding: 0; margin: 0 0 16px; }
+.other-services li { font-family: var(--display); font-size: 22px; letter-spacing: -.5px; line-height: 1.4; margin-top: 8px; }
+.contact-details address { font-style: normal; font-size: 13px; line-height: 1.8; max-width: 320px; margin: 24px 0 12px; }
