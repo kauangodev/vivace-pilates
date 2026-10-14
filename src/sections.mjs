@@ -1,13 +1,36 @@
-import {site} from '../content/site.mjs';
+import {site,whatsappLink} from '../content/site.mjs';
+import {photography} from '../content/photography.mjs';
 import {escape} from './components.mjs';
+import {photograph} from './media.mjs';
 
 export function aboutSection() {
   return '<section class="about-section" id="vivace" aria-labelledby="about-title"><div class="container">'+
-    '<div class="about-layout"><h2 id="about-title">'+escape(site.copy.aboutTitle)+'</h2>'+
+    '<div class="about-layout"><div class="about-heading"><h2 id="about-title" data-title-reveal><span>Conheça</span> <span>a Vivace.</span></h2>'+
     '<div class="about-copy" data-reveal><p class="about-lead">'+escape(site.copy.aboutDescription)+'</p>'+
-    '<p class="about-body">'+escape(site.copy.aboutBody)+'</p><div class="other-services"><p>Além do Pilates, a Vivace anuncia:</p><ul>'+site.services.filter(service=>service.title!=='Pilates').map(service=>'<li>'+escape(service.title)+'</li>').join('')+'</ul><p>Consulte a equipe sobre disponibilidade e condições.</p></div></div></div>'+
-    '<div class="care-points">'+site.differentials.map(d=>'<article><h3>'+escape(d.title)+'</h3><p>'+escape(d.description)+'</p></article>').join('')+'</div>'+
-    '<p class="institution-note">Conheça também o <a href="'+escape(site.contact.instagram)+'">Instagram oficial da Vivace</a>.</p></div></section>';
+    '<p class="about-body">'+escape(site.copy.aboutBody)+'</p><p class="about-body">'+escape(site.copy.aboutExperience)+'</p>'+
+    '<a class="text-link" href="#servicos">Conhecer os serviços</a></div></div>'+
+    '<div class="institution-images">'+photograph(photography.equipment,{className:'institution-equipment',sizes:'(max-width:767px) calc(100vw - 48px), 42vw',caption:'Pilates no Instagram da Vivace'})+
+    '<div class="institution-location">'+photograph(photography.facade,{className:'institution-facade',sizes:'(max-width:767px) calc(100vw - 48px), 330px',caption:'A fachada da Vivace'})+
+    '<p>Rua Primeiro de Maio, 555<br>Centro, Igarapé.</p></div></div></div>'+
+    '<div class="care-points">'+site.differentials.map(d=>'<article data-reveal><h3>'+escape(d.title)+'</h3><p>'+escape(d.description)+'</p></article>').join('')+'</div>'+
+    '<p class="institution-note">Mais sobre a Vivace no <a href="'+escape(site.contact.instagram)+'">Instagram oficial</a>.</p></div></section>';
+}
+export function servicesSection(){
+  return '<section class="services-section" id="servicos" aria-labelledby="services-title"><div class="container">'+
+    '<div class="services-heading"><h2 id="services-title" data-title-reveal><span>Pilates, fisioterapia</span> <span>e LPF.</span></h2>'+
+    '<p>Conheça a proposta de cada serviço. Para disponibilidade, valores e orientações de atendimento, converse com a equipe.</p></div>'+
+    '<div class="service-stories">'+site.services.map(service=>{
+      const photo=photography[service.photo];
+      const url=whatsappLink(site.contact.whatsapp,service.message)||site.contact.instagram;
+      return '<article class="service-story service-'+service.id+'" id="servico-'+service.id+'" aria-labelledby="service-title-'+service.id+'">'+
+        '<div class="service-copy" data-reveal><h3 id="service-title-'+service.id+'">'+escape(service.title)+'</h3>'+
+        '<p class="service-intro">'+escape(service.intro)+'</p><p class="service-description">'+escape(service.description)+'</p>'+
+        '<details class="service-details"><summary>'+escape(service.detailTitle)+'</summary><div class="details-content">'+
+        service.details.map(detail=>'<div><h4>'+escape(detail.title)+'</h4><p>'+escape(detail.body)+'</p></div>').join('')+
+        '<p class="service-reference">Sobre a prática: <a href="'+escape(service.reference.url)+'">'+escape(service.reference.label)+'</a>.</p></div></details>'+
+        '<a class="text-link service-cta" href="'+escape(url)+'">'+escape(service.cta)+'</a></div>'+
+        photograph(photo,{className:'service-photo',sizes:'(max-width:767px) calc(100vw - 48px), (min-width:1600px) 720px, 48vw',caption:service.caption})+'</article>';
+    }).join('')+'</div></div></section>';
 }
 export function educationSection() {
   const data=site.education;

@@ -89,12 +89,28 @@
     {
       "label": "Passo ativo sobre pêssego",
       "ratio": 6.54
+    },
+    {
+      "label": "Texto de apoio sobre grafite",
+      "ratio": 10.05
+    },
+    {
+      "label": "Coral da marca sobre grafite",
+      "ratio": 5.5
+    },
+    {
+      "label": "Texto sobre faixa de prévia",
+      "ratio": 5.36
+    },
+    {
+      "label": "Texto de controle na galeria",
+      "ratio": 9.79
     }
   ],
   "zoom": {
     "viewport": 1440,
     "bodyRight": 1440,
-    "heading": 744
+    "heading": 839.625
   },
   "redesign": {
     "noDecorativeArrows": true,
@@ -118,11 +134,69 @@
     "noUnconfirmedFreeTrial": true,
     "externalResourceRequests": 0,
     "diagnostic": {
-      "lcpMilliseconds": 140,
+      "lcpMilliseconds": 120,
       "cls": 0,
-      "resourceBytes": 151799,
+      "resourceBytes": 376063,
       "context": "Chromium local, sem limitação de rede; valores de diagnóstico, não métricas de campo"
     }
+  },
+  "evolution": {
+    "serviceDestinations": [
+      {
+        "id": "pilates",
+        "number": "/5531996906333",
+        "message": "Olá! Conheci a Vivace pelo site e gostaria de saber mais sobre as aulas de Pilates e os horários disponíveis."
+      },
+      {
+        "id": "fisioterapia",
+        "number": "/5531996906333",
+        "message": "Olá! Conheci a Vivace pelo site e gostaria de informações sobre o atendimento de fisioterapia pélvica e ortopédica."
+      },
+      {
+        "id": "lpf",
+        "number": "/5531996906333",
+        "message": "Olá! Conheci a Vivace pelo site e gostaria de saber mais sobre o LPF e como funciona a prática."
+      }
+    ],
+    "distinctServicePhotos": true,
+    "institutionalPhotos": 3,
+    "illustrativePhotos": 3,
+    "lazyPhotos": 5,
+    "heroAspect": {
+      "source": 0.8396111786148238,
+      "display": 0.839832628763696
+    },
+    "photoDialogKeyboard": true,
+    "photoDialogTouch": true,
+    "focusTrapAndReturn": true,
+    "noJsImageFallback": true,
+    "noJsServiceDetails": true,
+    "parallaxDesktop": "translateY(-0.23px) scale(1.025)",
+    "reducedMotionCancelsAll": true,
+    "mobileParallaxDisabled": true,
+    "stableGalleryFrames": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "stableFrame": true
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "stableFrame": true
+      },
+      {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "stableFrame": true
+      }
+    ]
   },
   "checks": [
     "Menu em todas as larguras mobile: abertura, Escape, foco e navegação",
@@ -131,5 +205,15 @@
     "404 com status correto e retorno",
     "Conteúdo e navegação sem JavaScript"
   ],
-  "timestamp": "2026-10-14T16:52:50.402Z"
+  "timestamp": "2026-10-14T17:33:44.224Z",
+  "buildGuard": {
+    "productionBlocked": true,
+    "previewUnchanged": true,
+    "pending": [
+      "Aprovação editorial",
+      "Domínio",
+      "Cessão das fotos institucionais",
+      "Headers de indexação"
+    ]
+  }
 }

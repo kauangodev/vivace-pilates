@@ -9,6 +9,18 @@ export const research = {
     {id:'cleveland',title:'Pilates: What It Is and Health Benefits',url:'https://health.clevelandclinic.org/everything-you-want-to-know-about-pilates',access:'conteúdo consultado',role:'conteúdo educativo'},
     {id:'merrithew',title:'What is Pilates? Everything you need to know',url:'https://www.merrithew.com/blog/post/2023-05-17/what-is-pilates-everything-you-need-to-know-about-pilates',access:'conteúdo consultado',role:'conteúdo educativo e princípios de execução'},
   ],
+  serviceEducation: [
+    {id:'nhs-physiotherapy',url:'https://www.nhs.uk/tests-and-treatments/physiotherapy/',access:'consultado via web em 14/10/2026',scope:'Explicação geral de fisioterapia, avaliação, movimento e exercício; sem afirmar protocolos da Vivace.'},
+    {id:'nhs-pelvic',url:'https://www.uhliverpool.nhs.uk/services/service-finder/pelvic-health-physiotherapy',access:'consultado via web em 14/10/2026',scope:'Área pélvica e cuidado guiado por avaliação individual; sem listar sintomas ou prometer resultados.'},
+    {id:'lpf',url:'https://mx.lowpressurefitness.com/es/conoce-el-sistema-lpf/',access:'consultado via web em 14/10/2026',scope:'LPF como treinamento postural e respiratório; não reproduz alegações de resultado clínico ou estético.'}
+  ],
+  photographyResearch: {
+    catalog:'content/photography.mjs',
+    instagramAccess:'Biografia e duas publicações consultadas novamente em Chromium, sem autenticação, em 14/10/2026. Fotografias vieram do elemento img público visível.',
+    wellhubAccess:'Galeria pública do cadastro consultada; foto da fachada selecionada. Registros com pacientes e sala com resolução insuficiente não usados.',
+    stockLicense:'https://www.pexels.com/license/',
+    publication:'Materiais institucionais selecionados para estudo local da própria marca solicitado pelo usuário; confirmar autoria, atualidade e cessão para publicação externa.'
+  },
   confirmedByUser: {instagram:'https://www.instagram.com/vivace.igarape/',whatsapp:'5531996906333',date:'2026-10-14'},
   publiclyReported: [
     {claim:'Acompanhamento por fisioterapeutas e atendimento personalizado',source:'wellhub',status:'cadastro público; revisão institucional pendente'},
@@ -21,6 +33,6 @@ export const research = {
     {field:'hours',candidate:'Segunda a sábado, 07:00–20:00',reason:'Disponibilidade atual não confirmada; não publicada.'},
     {field:'trialClass',candidate:'Aula experimental gratuita',reason:'Condições podem variar; não anunciada sem confirmação.'},
     {field:'services',candidate:'Mat Pilates',reason:'Modalidade listada no cadastro; disponibilidade atual deve ser validada.'},
-    {field:'photography',reason:'Não há arquivos institucionais com autorização de uso documentada.'},
+    {field:'photography',reason:'Prévia agora inclui materiais publicados pela marca; cessão para publicação definitiva permanece sem documentação.'},
   ],
 };

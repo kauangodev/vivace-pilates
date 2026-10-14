@@ -6,7 +6,7 @@ const {chromium}=require('C:/Users/kauan/.cache/codex-runtimes/codex-primary-run
 const browser=await chromium.launch({headless:true});
 const base='http://127.0.0.1:4173';
 const errors=[],responses=[];
-const page=await browser.newPage();
+const page=await browser.newPage({reducedMotion:'reduce'});
 page.on('pageerror',error=>errors.push(error.message));
 page.on('console',msg=>{if(msg.type()==='error' && !msg.text().includes('404'))errors.push(msg.text());});
 page.on('response',response=>{if(response.status()>=400)responses.push({url:response.url(),status:response.status()});});
@@ -17,6 +17,11 @@ for(const width of [320,375,390,768,1024,1440,1920]){
  const response=await page.goto(base,{waitUntil:'networkidle'});
  assert.equal(response.status(),200);
  await page.evaluate(()=>document.fonts.ready);
+ for(const img of await page.locator('.editorial-photo img').all()){
+   await img.scrollIntoViewIfNeeded();
+   await img.evaluate(image=>image.decode());
+ }
+ await page.evaluate(()=>scrollTo(0,0));
  const layout=await page.evaluate(()=>{
  const nodes=[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&(r.right>innerWidth+1||r.left< -1)&&!e.classList.contains('skip');}).map(e=>({tag:e.tagName,className:e.className?.baseVal??e.className,right:e.getBoundingClientRect().right,left:e.getBoundingClientRect().left}));
  return {viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,overflow:nodes,heading:document.querySelectorAll('h1').length,images:[...document.images].every(i=>i.complete&&i.naturalWidth>0)};
@@ -60,7 +65,7 @@ assert.equal(await noJs.locator('h1').isVisible(),true);
 await noJs.locator('#main-nav').getByRole('link',{name:'A Vivace',exact:true}).click();
 assert.equal(new URL(noJs.url()).hash,'#vivace');
 function luminance(hex){const values=hex.match(/\w\w/g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return values[0]*.2126+values[1]*.7152+values[2]*.0722;}
-const contrasts=[['Grafite sobre coral','242a2d','f27f53'],['Coral escuro sobre neutro da marca','b94823','f7f7f7'],['Texto secundário sobre neutro da marca','596269','f7f7f7'],['Texto de apoio sobre branco','596269','ffffff'],['Branco sobre coral escuro','ffffff','b94823'],['Marfim sobre grafite','f7f7f7','242a2d'],['Texto sobre pêssego','596269','fce7dc'],['Passo ativo sobre pêssego','8f3519','fce7dc']].map(([label,fg,bg])=>{const a=luminance(fg),b=luminance(bg);return {label,ratio:Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2))};});
+const contrasts=[['Grafite sobre coral','242a2d','f27f53'],['Coral escuro sobre neutro da marca','b94823','f7f7f7'],['Texto secundário sobre neutro da marca','596269','f7f7f7'],['Texto de apoio sobre branco','596269','ffffff'],['Branco sobre coral escuro','ffffff','b94823'],['Marfim sobre grafite','f7f7f7','242a2d'],['Texto sobre pêssego','596269','fce7dc'],['Passo ativo sobre pêssego','8f3519','fce7dc'],['Texto de apoio sobre grafite','d4d7d8','242a2d'],['Coral da marca sobre grafite','f27f53','242a2d'],['Texto sobre faixa de prévia','596269','f3ede8'],['Texto de controle na galeria','ffffff','3d4549']].map(([label,fg,bg])=>{const a=luminance(fg),b=luminance(bg);return {label,ratio:Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2))};});
 assert.equal(contrasts.every(c=>c.ratio>=4.5),true,'Contraste de texto abaixo de 4.5:1');
 await page.setViewportSize({width:1440,height:1000});
 await page.goto(base,{waitUntil:'networkidle'});
@@ -111,7 +116,9 @@ assert.equal(whatsappUrl.pathname,'/5531996906333');
 assert.equal(whatsappUrl.searchParams.get('text'),'Olá! Conheci a Vivace pelo site e gostaria de saber mais sobre as aulas de Pilates e os horários disponíveis.');
 assert.equal(await page.locator('.contact-details a[href="https://www.instagram.com/vivace.igarape/"]').count(),1);
 assert.equal(await page.locator('[data-guide-step]').count(),3);
-assert.equal(await page.locator('.other-services').innerText().then(text=>text.includes('Fisioterapia pélvica e ortopédica')&&text.includes('LPF')),true);
+assert.equal(await page.locator('.service-story').count(),3);
+assert.equal(await page.getByRole('heading',{name:'Fisioterapia pélvica e ortopédica',exact:true}).count(),1);
+assert.equal(await page.getByRole('heading',{name:'LPF',exact:true}).count(),1);
 const mapUrl=new URL(await page.getByRole('link',{name:'Ver localização',exact:true}).getAttribute('href'));
 assert.equal(mapUrl.hostname,'www.google.com');
 assert.equal(mapUrl.searchParams.get('query').includes('Primeiro de Maio, 555'),true);
@@ -153,7 +160,79 @@ const diagnostic=await diagnosticPage.evaluate(()=>({
 assert.equal(network.every(url=>url.startsWith(base)),true,'Há carga automática de terceiros');
 const enrichment={officialServicesVisible:true,addressAndMapVerified:true,whatsappDestinationVerified:true,instagramOfficial:true,firstVisitSteps:3,nativeFaqWithAndWithoutJs:true,noUnconfirmedFreeTrial:true,externalResourceRequests:0,diagnostic};
 
-const result={layouts,errors,responses,contrasts,zoom,redesign,enrichment,checks:['Menu em todas as larguras mobile: abertura, Escape, foco e navegação','Link para pular ao conteúdo','Movimento reduzido','404 com status correto e retorno','Conteúdo e navegação sem JavaScript'],timestamp:new Date().toISOString()};
+// Serviços com detalhes progressivos e destino específico, sem envio de mensagens.
+await page.goto(base,{waitUntil:'networkidle'});
+const serviceDestinations=[];
+for(const id of ['pilates','fisioterapia','lpf']){
+ const story=page.locator('#servico-'+id);
+ const details=story.locator('.service-details');
+ await details.locator('summary').focus();
+ await page.keyboard.press('Enter');
+ assert.equal(await details.evaluate(element=>element.open),true);
+ assert.equal(await details.locator('.details-content').isVisible(),true);
+ await page.keyboard.press('Enter');
+ assert.equal(await details.evaluate(element=>element.open),false);
+ const target=new URL(await story.locator('.service-cta').getAttribute('href'));
+ assert.equal(target.host,'wa.me');
+ assert.equal(target.pathname,'/5531996906333');
+ assert.match(target.searchParams.get('text'),new RegExp(id==='fisioterapia'?'fisioterapia':id==='lpf'?'LPF':'Pilates'));
+ serviceDestinations.push({id,number:target.pathname,message:target.searchParams.get('text')});
+}
+assert.equal(new Set(await page.locator('.service-photo img').evaluateAll(images=>images.map(i=>i.getAttribute('src')))).size,3);
+assert.equal(await page.locator('.editorial-photo').count(),6);
+assert.equal(await page.locator('.editorial-photo img[loading="lazy"]').count(),5);
+assert.equal(await page.locator('.hero-photo img[fetchpriority="high"]').count(),1);
+const heroAspect=await page.locator('.hero-photo').evaluate(photo=>{
+ const img=photo.querySelector('img'),rect=photo.querySelector('.photo-window').getBoundingClientRect();
+ return {source:img.naturalWidth/img.naturalHeight,display:rect.width/rect.height};
+});
+assert.equal(Math.abs(heroAspect.source-heroAspect.display)<.002,true,'A fotografia real do hero foi recortada além de sua proporção');
+await page.getByRole('heading',{name:'Pilates em Igarapé.',exact:true}).waitFor();
+const imageLink=page.locator('.hero-photo [data-gallery]');
+await imageLink.focus();await page.keyboard.press('Enter');
+const dialog=page.getByRole('dialog',{name:'Fotografias da prévia Vivace',exact:true});
+assert.equal(await dialog.isVisible(),true);
+assert.equal(await dialog.getByRole('button',{name:'Fechar',exact:true}).evaluate(e=>document.activeElement===e),true);
+await page.locator('.dialog-media img').evaluate(image=>image.decode());
+assert.equal(await page.locator('.dialog-counter').innerText(),'1 de 6');
+await dialog.getByRole('button',{name:'Próxima',exact:true}).click();
+assert.equal(await page.locator('.dialog-counter').innerText(),'2 de 6');
+await page.keyboard.press('ArrowLeft');
+assert.equal(await page.locator('.dialog-counter').innerText(),'1 de 6');
+await dialog.getByRole('button',{name:'Próxima',exact:true}).focus();await page.keyboard.press('Tab');
+assert.equal(await dialog.getByRole('button',{name:'Fechar',exact:true}).evaluate(e=>document.activeElement===e),true,'Foco escapou do dialog');
+await page.keyboard.press('Shift+Tab');
+assert.equal(await dialog.getByRole('button',{name:'Próxima',exact:true}).evaluate(e=>document.activeElement===e),true,'Shift+Tab escapou do dialog');
+await page.keyboard.press('Escape');
+assert.equal(await dialog.isVisible(),false);
+assert.equal(await imageLink.evaluate(e=>document.activeElement===e),true,'Foco não retornou à fotografia');
+await touchPage.goto(base,{waitUntil:'networkidle'});
+await touchPage.locator('.hero-photo [data-gallery]').tap();
+assert.equal(await touchPage.locator('.photo-dialog').isVisible(),true);
+await touchPage.locator('.dialog-next').tap();
+assert.equal(await touchPage.locator('.dialog-counter').innerText(),'2 de 6');
+await touchPage.locator('.dialog-close').tap();
+assert.equal(await touchPage.locator('.photo-dialog').isVisible(),false);
+const noJsDetails=noJs.locator('.service-details').first();
+await noJsDetails.locator('summary').click();assert.equal(await noJsDetails.evaluate(e=>e.open),true);
+const fallback=await noJs.locator('.hero-photo [data-gallery]').getAttribute('href');
+assert.match(fallback,/^\/assets\/vivace-institution-1400\.webp$/);
+const imageResponse=await noJs.request.get(base+fallback);assert.equal(imageResponse.status(),200);
+await motionPage.emulateMedia({reducedMotion:'no-preference'});
+await motionPage.setViewportSize({width:1440,height:1000});
+await motionPage.goto(base,{waitUntil:'networkidle'});
+const parallaxDesktop=await motionPage.locator('.hero-photo .photo-surface').evaluate(e=>e.style.transform);
+assert.match(parallaxDesktop,/translateY/);
+await motionPage.emulateMedia({reducedMotion:'reduce'});
+await motionPage.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+assert.equal(await motionPage.locator('.hero-photo .photo-surface').evaluate(e=>e.style.transform),'');
+assert.equal(await motionPage.evaluate(()=>document.getAnimations().length),0);
+await motionPage.emulateMedia({reducedMotion:'no-preference'});
+await motionPage.setViewportSize({width:390,height:844});
+await motionPage.goto(base,{waitUntil:'networkidle'});
+assert.equal(await motionPage.locator('.hero-photo .photo-surface').evaluate(e=>e.style.transform),'');
+const evolution={serviceDestinations,distinctServicePhotos:true,institutionalPhotos:3,illustrativePhotos:3,lazyPhotos:5,heroAspect,photoDialogKeyboard:true,photoDialogTouch:true,focusTrapAndReturn:true,noJsImageFallback:true,noJsServiceDetails:true,parallaxDesktop,reducedMotionCancelsAll:true,mobileParallaxDisabled:true};
+const result={layouts,errors,responses,contrasts,zoom,redesign,enrichment,evolution,checks:['Menu em todas as larguras mobile: abertura, Escape, foco e navegação','Link para pular ao conteúdo','Movimento reduzido','404 com status correto e retorno','Conteúdo e navegação sem JavaScript'],timestamp:new Date().toISOString()};
 await writeFile('docs/validation.json',JSON.stringify(result,null,2));
 console.log(JSON.stringify(result,null,2));
 await browser.close();

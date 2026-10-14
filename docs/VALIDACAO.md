@@ -1,24 +1,32 @@
-# Validação da versão enriquecida
+# Validação da evolução visual da Vivace
 
 14/10/2026 · Chromium/Playwright · Windows · Node.js 24.19.0 · HTTP local.
 
-- Build e sintaxe de módulos passaram; diff sem erros de whitespace.
+- Build estático, sintaxe dos módulos e JavaScript e diff sem erros de whitespace.
 - Sete larguras: 320, 375, 390, 768, 1024, 1440 e 1920 px, sem overflow.
-- Imagens carregadas, um H1 e conteúdo entregue no HTML.
-- Menu por toque, abertura, Escape, seleção e foco corretos.
-- Skip link, navegação sem JavaScript e 404 real com retorno.
-- FAQ details/summary por teclado e sem JavaScript.
-- Contato do WhatsApp e mensagem codificada conferidos sem envio real.
-- Instagram confirmado pelo usuário; serviços e endereço visíveis; Maps usa o endereço correto.
-- Logo original, favicon, ausência de setas decorativas e links internos válidos.
-- Animações com movimento normal; nenhuma com movimento reduzido.
-- Menor contraste calculado nos pares principais: 4,88:1. Pêssego e texto: 5,21:1.
-- Ampliação via CSS zoom 200% sem overflow do corpo; não substitui teste completo de zoom.
+- Seis fotografias carregadas após percorrer as imagens sob demanda; hero prioritário e proporção preservada.
+- Menu por toque, abertura, Escape, seleção e retorno de foco.
+- Skip link, um H1, navegação sem JavaScript e 404 real com retorno.
+- FAQ e três detalhes dos serviços por teclado e sem JavaScript.
+- Destino oficial do WhatsApp, mensagens específicas de Pilates, fisioterapia e LPF; nenhuma mensagem enviada.
+- Instagram, endereço e link de localização preservados.
+- Galeria: abertura por Enter, troca manual e setas, Tab/Shift+Tab contidos, Escape e retorno ao link da foto.
+- Galeria por toque e arquivo local como fallback quando o JavaScript está desativado.
+- Área de imagem estável nas seis trocas, verificada também em 320 × 568 px; o diálogo permanece dentro da tela.
+- Logo original, favicon, ausência de setas decorativas e âncoras internas válidas.
+- Animações com movimento normal; cancelamento e ausência de parallax com movimento reduzido.
+- Parallax presente no desktop e ausente no mobile.
+- Menor contraste calculado nos 12 pares principais: 4,88:1.
+- Ampliação via CSS zoom 200% sem overflow; não substitui teste completo de zoom do navegador.
 - Zero erros de JavaScript. Única resposta 404: rota intencional do teste.
 - Zero carregamentos automáticos de terceiros no cenário medido.
-- Diagnóstico local: LCP 140 ms e CLS 0; cerca de 152 KB de recursos. Não são resultados de campo e não incluem INP.
+- Diagnóstico local: LCP 120 ms, CLS 0, aproximadamente 376 KB de recursos. Sem limitação de rede; não são dados de campo nem incluem INP.
+- Produção recusada com pendências de conteúdo, domínio e cessão das fotos; a prévia existente permaneceu intacta.
 
-Evidências: [JSON](validation.json), [desktop](screenshots/desktop-1440.png), [mobile](screenshots/mobile-390.png).
-Pesquisa e entrega: [relatório completo](ENRIQUECIMENTO.md).
+O teste encontrou inicialmente um ciclo incompleto de foco ao pressionar Tab no último controle da galeria. A implementação foi corrigida; a rodada final confirmou Tab e Shift+Tab, Escape e retorno de foco.
+
+Evidências: [JSON](validation.json), [desktop completo](screenshots/desktop-1440.png), [mobile completo](screenshots/mobile-390.png), [hero desktop](screenshots/evolution-desktop-first.png), [hero mobile](screenshots/evolution-mobile-first.png), [galeria](screenshots/evolution-gallery.png).
+
+Pesquisa, origem das fotos e entrega: [relatório completo](EVOLUCAO_VISUAL.md).
 
 Sem auditoria completa WCAG, leitor de tela, Lighthouse ou publicação externa. Lint e TypeScript não estão configurados.

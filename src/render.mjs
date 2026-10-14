@@ -1,10 +1,12 @@
 import {site} from '../content/site.mjs';
-import {escape, header, footer, photo, contactSection, contactUrl} from './components.mjs';
-import {aboutSection, educationSection, firstVisitSection, faqSection} from './sections.mjs';
+import {photograph} from './media.mjs';
+import {photography} from '../content/photography.mjs';
+import {escape, header, footer, contactSection, contactUrl} from './components.mjs';
+import {aboutSection, servicesSection, educationSection, firstVisitSection, faqSection} from './sections.mjs';
 
 function document(body,{notFound=false,production=false}={}) {
   const title=notFound?'Página não encontrada | Vivace Pilates':'Vivace Pilates | Pilates em Igarapé, MG';
-  const description='Conheça a Vivace Pilates em Igarapé, entenda a prática e converse com a equipe pelo WhatsApp oficial sobre aulas e horários.';
+  const description='Conheça a Vivace em Igarapé: Pilates, fisioterapia pélvica e ortopédica e LPF. Converse com a equipe pelo WhatsApp oficial.';
   return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'+
     '<meta name="robots" content="'+(production&&!notFound?'index, follow':'noindex, nofollow')+'"><title>'+title+'</title>'+
     '<meta name="description" content="'+description+'"><meta name="theme-color" content="#F7F7F7">'+
@@ -16,16 +18,16 @@ function document(body,{notFound=false,production=false}={}) {
     '<link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head><body>'+
     '<a class="skip" href="#conteudo">Pular para o conteúdo</a>'+
     (production?'':'<div class="preview-banner">Prévia da Vivace · em revisão</div>')+
-    header({notFound})+'<main id="conteudo" tabindex="-1">'+body+'</main>'+footer({production})+'</body></html>';
+    header({notFound})+'<main id="conteudo" tabindex="-1">'+body+'</main>'+footer({production})+(notFound?'':'<dialog class="photo-dialog" aria-label="Fotografias da prévia Vivace" aria-describedby="dialog-caption"><div class="dialog-toolbar"><p>Fotografias</p><button class="dialog-button dialog-close" type="button" autofocus>Fechar</button></div><div class="dialog-media"></div><p class="dialog-caption" id="dialog-caption"></p><div class="dialog-navigation"><button class="dialog-button dialog-previous" type="button">Anterior</button><span class="dialog-counter" aria-live="polite"></span><button class="dialog-button dialog-next" type="button">Próxima</button></div></dialog>')+'</body></html>';
 }
 export function renderHome(options={}) {
   const url=contactUrl();
-  const heading=site.copy.heroLines.map((line,index)=>'<span class="title-line'+(index===1?' title-accent':'')+'">'+escape(line)+'</span>').join('');
+  const heading=site.copy.heroLines.map((line,index)=>'<span class="title-line'+(index===1?' title-accent':'')+'">'+escape(line)+'</span>').join(' ');
   const hero='<section class="hero container" id="inicio" aria-labelledby="hero-title"><div class="hero-heading">'+
-    '<h1 id="hero-title" data-intro>'+heading+'</h1><div class="hero-intro"><p>'+escape(site.copy.heroDescription)+'</p>'+
+    '<h1 id="hero-title" data-intro>'+heading+'</h1><div class="hero-intro" data-hero-copy><p>'+escape(site.copy.heroDescription)+'</p>'+
     '<a class="button" href="'+escape(url||'#vivace')+'">'+(url?'Consultar as aulas':'Conheça a Vivace')+'</a>'+
-    '</div></div>'+photo()+'</section>';
-  return document(hero+aboutSection()+educationSection()+firstVisitSection()+faqSection()+contactSection(),options);
+    '<a class="text-link hero-services" href="#servicos">Conhecer todos os serviços</a></div></div>'+photograph(photography.hero,{className:'hero-photo',sizes:'(max-width:767px) calc(100vw - 48px), (min-width:1600px) 700px, 48vw',eager:true,reveal:false,caption:'Vivace, Igarapé · registro institucional'})+'</section>';
+  return document(hero+aboutSection()+servicesSection()+educationSection()+firstVisitSection()+faqSection()+contactSection(),options);
 }
 export function render404(options={}) {
   return document('<section class="not-found container"><p class="error-code">404</p><h1>Página não<br>encontrada.</h1>'+

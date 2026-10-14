@@ -2,7 +2,7 @@ import {site, whatsappLink} from '../content/site.mjs';
 
 export const escape = text => String(text).replace(/[&<>"']/g, char =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const nav = [['inicio','Início'],['vivace','A Vivace'],['pilates','Pilates'],['primeira-aula','Primeira aula'],['contato','Contato']];
+const nav = [['inicio','Início'],['vivace','A Vivace'],['servicos','Serviços'],['pilates','Pilates'],['primeira-aula','Primeira aula'],['contato','Contato']];
 export const contactUrl = () => whatsappLink(site.contact.whatsapp) || site.contact.instagram;
 
 export function brand(home='/#inicio') {
@@ -23,15 +23,6 @@ export function footer({production=false}={}) {
     '<nav aria-label="Navegação do rodapé">'+nav.map(([id,label])=>'<a href="/#'+id+'">'+label+'</a>').join('')+
     '</nav><a class="top-link" href="/#inicio">Voltar ao início</a></div><div class="container footer-bottom"><small>© '+new Date().getFullYear()+' Vivace Pilates</small>'+
     (production?'':'<span>Prévia editorial · Conteúdo em validação</span>')+'</div></footer>';
-}
-export function photo() {
-  const p=site.photography;
-  const large=p.large ? ', '+p.large+' 2200w' : '';
-  return '<figure class="hero-photo"><div class="photo-window" data-image-intro><img src="'+p.src+'" srcset="'+p.small+' 700w, '+p.src+' 1400w'+large+
-    '" sizes="(max-width:767px) calc(100vw - 40px), (min-width:1600px) 1440px, 90vw" width="'+p.width+'" height="'+p.height+
-    '" alt="'+escape(p.alt)+'" fetchpriority="high" decoding="async"></div><figcaption><span>'+
-    (p.status==='autorizada'?'':'Fotografia ilustrativa. Não representa o espaço da Vivace.')+
-    '</span><span>'+escape(p.credit)+'</span></figcaption></figure>';
 }
 export function contactSection() {
   const url=contactUrl();
