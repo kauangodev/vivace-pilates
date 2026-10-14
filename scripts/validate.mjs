@@ -12,7 +12,7 @@ page.on('console',msg=>{if(msg.type()==='error' && !msg.text().includes('404'))e
 page.on('response',response=>{if(response.status()>=400)responses.push({url:response.url(),status:response.status()});});
 await mkdir('docs/screenshots',{recursive:true});
 const layouts=[];
-for(const width of [320,375,390,768,1024,1440,1920]){
+for(const width of [320,375,390,430,640,767,768,820,899,900,959,960,1024,1199,1200,1280,1440,1920]){
  await page.setViewportSize({width,height:1000});
  const response=await page.goto(base,{waitUntil:'networkidle'});
  assert.equal(response.status(),200);
@@ -30,7 +30,7 @@ for(const width of [320,375,390,768,1024,1440,1920]){
  assert.equal(layout.heading,1);assert.equal(layout.images,true);
  if(width===1440)await page.screenshot({path:'docs/screenshots/desktop-1440.png',fullPage:true});
  if(width===390)await page.screenshot({path:'docs/screenshots/mobile-390.png',fullPage:true});
- if(width<768){
+ if(width<960){
  const trigger=page.locator('.menu-toggle');
  assert.equal(await trigger.getAttribute('aria-expanded'),'false');
  await trigger.click();
@@ -194,9 +194,9 @@ const dialog=page.getByRole('dialog',{name:'Fotografias da prévia Vivace',exact
 assert.equal(await dialog.isVisible(),true);
 assert.equal(await dialog.getByRole('button',{name:'Fechar',exact:true}).evaluate(e=>document.activeElement===e),true);
 await page.locator('.dialog-media img').evaluate(image=>image.decode());
-assert.equal(await page.locator('.dialog-counter').innerText(),'1 de 6');
+await page.waitForFunction(()=>document.querySelector('.dialog-counter').textContent==='1 de 6');
 await dialog.getByRole('button',{name:'Próxima',exact:true}).click();
-assert.equal(await page.locator('.dialog-counter').innerText(),'2 de 6');
+await page.waitForFunction(()=>document.querySelector('.dialog-counter').textContent==='2 de 6');
 await page.keyboard.press('ArrowLeft');
 assert.equal(await page.locator('.dialog-counter').innerText(),'1 de 6');
 await dialog.getByRole('button',{name:'Próxima',exact:true}).focus();await page.keyboard.press('Tab');
@@ -210,7 +210,7 @@ await touchPage.goto(base,{waitUntil:'networkidle'});
 await touchPage.locator('.hero-photo [data-gallery]').tap();
 assert.equal(await touchPage.locator('.photo-dialog').isVisible(),true);
 await touchPage.locator('.dialog-next').tap();
-assert.equal(await touchPage.locator('.dialog-counter').innerText(),'2 de 6');
+await touchPage.waitForFunction(()=>document.querySelector('.dialog-counter').textContent==='2 de 6');
 await touchPage.locator('.dialog-close').tap();
 assert.equal(await touchPage.locator('.photo-dialog').isVisible(),false);
 const noJsDetails=noJs.locator('.service-details').first();

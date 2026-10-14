@@ -1,0 +1,66 @@
+[
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "navFont": "17px",
+    "heroPhotoY": 285.78125,
+    "institutionPhotos": [
+      {
+        "width": 320,
+        "src": "vivace-equipment-700.webp"
+      },
+      {
+        "width": 319,
+        "src": "vivace-facade-639.webp"
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "scrollWidth": 768,
+    "navFont": "17px",
+    "heroPhotoY": 243.71875,
+    "institutionPhotos": [
+      {
+        "width": 365.921875,
+        "src": "vivace-equipment-700.webp"
+      },
+      {
+        "width": 304.953125,
+        "src": "vivace-facade-639.webp"
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "scrollWidth": 1024,
+    "navFont": "13px",
+    "heroPhotoY": 157,
+    "institutionPhotos": [
+      {
+        "width": 399.265625,
+        "src": "vivace-equipment-700.webp"
+      },
+      {
+        "width": 319,
+        "src": "vivace-facade-639.webp"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navFont": "13px",
+    "heroPhotoY": 157,
+    "institutionPhotos": [
+      {
+        "width": 375.5,
+        "src": "vivace-equipment-700.webp"
+      },
+      {
+        "width": 281.625,
+        "src": "vivace-facade-639.webp"
+      }
+    ]
+  }
+]

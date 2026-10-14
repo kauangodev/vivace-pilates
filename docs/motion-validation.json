@@ -1,0 +1,624 @@
+{
+  "timestamp": "2026-10-14T18:37:56.990Z",
+  "node": "24.19.0",
+  "checks": [
+    "24 larguras; nenhum overflow, inclusive com os três passos abertos",
+    "Menu em celular e tablet; viewport baixa, Escape, foco e mudança para desktop",
+    "Entrada do hero, cena sem repetição e cancelamento do movimento ativo",
+    "Passos expansíveis, foco fotográfico e troca rápida de fotos sem resultado antigo",
+    "Sem JavaScript, sem APIs de animação e falha no arquivo JS: conteúdo e navegação acessíveis"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 20,
+        "y": 278.65625,
+        "width": 280,
+        "height": 333.390625
+      },
+      "heroCopy": {
+        "x": 20,
+        "y": 694.734375,
+        "width": 280,
+        "height": 236
+      },
+      "scenes": 60
+    },
+    {
+      "width": 375,
+      "scrollWidth": 375,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 20,
+        "y": 281.125,
+        "width": 335,
+        "height": 398.875
+      },
+      "heroCopy": {
+        "x": 20,
+        "y": 762.6875,
+        "width": 335,
+        "height": 236
+      },
+      "scenes": 60
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 25,
+        "y": 285.78125,
+        "width": 340,
+        "height": 404.828125
+      },
+      "heroCopy": {
+        "x": 20,
+        "y": 773.296875,
+        "width": 350,
+        "height": 209
+      },
+      "scenes": 60
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 45,
+        "y": 298.15625,
+        "width": 340,
+        "height": 404.828125
+      },
+      "heroCopy": {
+        "x": 20,
+        "y": 785.671875,
+        "width": 390,
+        "height": 155
+      },
+      "scenes": 60
+    },
+    {
+      "width": 540,
+      "scrollWidth": 540,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 99.984375,
+        "y": 332.1875,
+        "width": 340,
+        "height": 404.828125
+      },
+      "heroCopy": {
+        "x": 24.296875,
+        "y": 819.703125,
+        "width": 491.390625,
+        "height": 155
+      },
+      "scenes": 60
+    },
+    {
+      "width": 600,
+      "scrollWidth": 600,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 130,
+        "y": 350.78125,
+        "width": 340,
+        "height": 404.828125
+      },
+      "heroCopy": {
+        "x": 27,
+        "y": 838.296875,
+        "width": 540,
+        "height": 155
+      },
+      "scenes": 60
+    },
+    {
+      "width": 639,
+      "scrollWidth": 639,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 149.484375,
+        "y": 361,
+        "width": 340,
+        "height": 404.828125
+      },
+      "heroCopy": {
+        "x": 28.75,
+        "y": 848.515625,
+        "width": 540,
+        "height": 155
+      },
+      "scenes": 60
+    },
+    {
+      "width": 640,
+      "scrollWidth": 640,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 28.796875,
+        "y": 243.71875,
+        "width": 275.1875,
+        "height": 327.65625
+      },
+      "heroCopy": {
+        "x": 335.984375,
+        "y": 314.296875,
+        "width": 275.203125,
+        "height": 245.1875
+      },
+      "scenes": 60
+    },
+    {
+      "width": 700,
+      "scrollWidth": 700,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 31.5,
+        "y": 243.71875,
+        "width": 302.5,
+        "height": 360.1875
+      },
+      "heroCopy": {
+        "x": 366,
+        "y": 330.5625,
+        "width": 302.5,
+        "height": 245.1875
+      },
+      "scenes": 60
+    },
+    {
+      "width": 767,
+      "scrollWidth": 767,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 34.515625,
+        "y": 243.71875,
+        "width": 332.984375,
+        "height": 396.484375
+      },
+      "heroCopy": {
+        "x": 399.5,
+        "y": 348.703125,
+        "width": 332.984375,
+        "height": 245.1875
+      },
+      "scenes": 60
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 34.5625,
+        "y": 243.71875,
+        "width": 333.4375,
+        "height": 397.015625
+      },
+      "heroCopy": {
+        "x": 400,
+        "y": 348.96875,
+        "width": 333.4375,
+        "height": 245.1875
+      },
+      "scenes": 60
+    },
+    {
+      "width": 820,
+      "scrollWidth": 820,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 36.90625,
+        "y": 247.6875,
+        "width": 357.09375,
+        "height": 425.1875
+      },
+      "heroCopy": {
+        "x": 426,
+        "y": 367.03125,
+        "width": 357.09375,
+        "height": 245.1875
+      },
+      "scenes": 60
+    },
+    {
+      "width": 899,
+      "scrollWidth": 899,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 40.453125,
+        "y": 254.109375,
+        "width": 393.03125,
+        "height": 467.984375
+      },
+      "heroCopy": {
+        "x": 465.484375,
+        "y": 437.25,
+        "width": 393.046875,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 900,
+      "scrollWidth": 900,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 40.5,
+        "y": 254.203125,
+        "width": 393.5,
+        "height": 468.53125
+      },
+      "heroCopy": {
+        "x": 466,
+        "y": 437.609375,
+        "width": 393.5,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 959,
+      "scrollWidth": 959,
+      "menu": true,
+      "navFont": "17px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 43.15625,
+        "y": 259,
+        "width": 420.34375,
+        "height": 500.5
+      },
+      "heroCopy": {
+        "x": 495.5,
+        "y": 458.390625,
+        "width": 420.34375,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 960,
+      "scrollWidth": 960,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 504,
+        "y": 157,
+        "width": 412.796875,
+        "height": 491.515625
+      },
+      "heroCopy": {
+        "x": 43.203125,
+        "y": 442.34375,
+        "width": 412.796875,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 537.578125,
+        "y": 157,
+        "width": 440.328125,
+        "height": 524.296875
+      },
+      "heroCopy": {
+        "x": 46.078125,
+        "y": 458.734375,
+        "width": 430,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1100,
+      "scrollWidth": 1100,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 577.5,
+        "y": 157,
+        "width": 473,
+        "height": 563.203125
+      },
+      "heroCopy": {
+        "x": 49.5,
+        "y": 481.515625,
+        "width": 430,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1199,
+      "scrollWidth": 1199,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 629.453125,
+        "y": 157,
+        "width": 515.578125,
+        "height": 613.890625
+      },
+      "heroCopy": {
+        "x": 53.953125,
+        "y": 514.03125,
+        "width": 430,
+        "height": 160.390625
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1200,
+      "scrollWidth": 1200,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 630,
+        "y": 157,
+        "width": 516,
+        "height": 614.40625
+      },
+      "heroCopy": {
+        "x": 54,
+        "y": 501.328125,
+        "width": 430,
+        "height": 165.78125
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 671.984375,
+        "y": 157,
+        "width": 550.40625,
+        "height": 655.375
+      },
+      "heroCopy": {
+        "x": 57.59375,
+        "y": 527.609375,
+        "width": 430,
+        "height": 165.78125
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 755.984375,
+        "y": 157,
+        "width": 619.203125,
+        "height": 737.28125
+      },
+      "heroCopy": {
+        "x": 64.796875,
+        "y": 580.171875,
+        "width": 430,
+        "height": 165.78125
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1600,
+      "scrollWidth": 1600,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 900,
+        "y": 157,
+        "width": 620,
+        "height": 738.234375
+      },
+      "heroCopy": {
+        "x": 80,
+        "y": 591.84375,
+        "width": 430,
+        "height": 165.78125
+      },
+      "scenes": 60
+    },
+    {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "menu": false,
+      "navFont": "13px",
+      "bodyFont": "15px",
+      "heroPhoto": {
+        "x": 1060,
+        "y": 157,
+        "width": 620,
+        "height": 738.234375
+      },
+      "heroCopy": {
+        "x": 240,
+        "y": 591.84375,
+        "width": 430,
+        "height": 165.78125
+      },
+      "scenes": 60
+    }
+  ],
+  "menus": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "fixedHeader": true,
+      "keyboard": true,
+      "resize": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 500
+      },
+      "fixedHeader": true,
+      "keyboard": true,
+      "resize": true
+    },
+    {
+      "viewport": {
+        "width": 959,
+        "height": 600
+      },
+      "fixedHeader": true,
+      "keyboard": true,
+      "resize": true
+    }
+  ],
+  "cancelledAnimations": 9,
+  "motionTargets": {
+    "before": 22,
+    "after": 60
+  },
+  "errors": [],
+  "profile": {
+    "lcp": 3648,
+    "cls": 0,
+    "eventDurations": [],
+    "heroResponseEnd": 3636.2000000029802,
+    "resourceBytes": 304498,
+    "localMaxEventDuration": 64,
+    "context": "Chromium local, CPU 4x, rede 750 kbps/120 ms, cache desativado; diagnóstico sintético, não dados de campo ou INP p75",
+    "externalRequests": 0,
+    "heroRequests": 1
+  },
+  "profileBeforePriority": {
+    "lcp": 4044,
+    "cls": 0,
+    "eventDurations": [],
+    "resourceBytes": 333611,
+    "localMaxEventDuration": 64,
+    "context": "Chromium local, CPU 4x, rede 750 kbps/120 ms, cache desativado; diagnóstico sintético, não dados de campo ou INP p75",
+    "externalRequests": 0
+  },
+  "profileUpdatedAt": "2026-10-14T19:09:44.648Z",
+  "denseImages": [
+    {
+      "width": 430,
+      "dpr": 2,
+      "choices": [
+        {
+          "src": "vivace-institution-700.webp",
+          "width": 340
+        },
+        {
+          "src": "vivace-equipment-700.webp",
+          "width": 320
+        },
+        {
+          "src": "vivace-facade-639.webp",
+          "width": 319
+        },
+        {
+          "src": "pilates-practice-1000.webp",
+          "width": 390
+        },
+        {
+          "src": "physio-care-1000.webp",
+          "width": 390
+        },
+        {
+          "src": "posture-movement-1000.webp",
+          "width": 390
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "dpr": 2,
+      "choices": [
+        {
+          "src": "vivace-institution-1000.webp",
+          "width": 440.328125
+        },
+        {
+          "src": "vivace-equipment-1000.webp",
+          "width": 399.265625
+        },
+        {
+          "src": "vivace-facade-639.webp",
+          "width": 319
+        },
+        {
+          "src": "pilates-practice-1000.webp",
+          "width": 441.90625
+        },
+        {
+          "src": "physio-care-1000.webp",
+          "width": 441.90625
+        },
+        {
+          "src": "posture-movement-1000.webp",
+          "width": 441.90625
+        }
+      ]
+    }
+  ],
+  "lifecycleReinitialized": true,
+  "profilePrevious": {
+    "lcp": 3660,
+    "cls": 0,
+    "eventDurations": [],
+    "heroResponseEnd": 3616.6000000089407,
+    "resourceBytes": 304498,
+    "localMaxEventDuration": 56,
+    "context": "Chromium local, CPU 4x, rede 750 kbps/120 ms, cache desativado; diagnóstico sintético, não dados de campo ou INP p75",
+    "externalRequests": 0,
+    "heroRequests": 1
+  },
+  "alternatingServices": true
+}

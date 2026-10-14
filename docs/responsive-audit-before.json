@@ -1,0 +1,453 @@
+[
+  {
+    "width": 320,
+    "scrollWidth": 320,
+    "navFont": "12px",
+    "menuVisible": true,
+    "heroTitle": {
+      "x": 20,
+      "y": 145,
+      "width": 280,
+      "height": 115.1875
+    },
+    "heroPhoto": {
+      "x": 20,
+      "y": 558.1875,
+      "width": 280,
+      "height": 333.390625
+    },
+    "heroCopy": {
+      "x": 20,
+      "y": 288.1875,
+      "width": 280,
+      "height": 238
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 20,
+        "y": 1731.3125,
+        "width": 260,
+        "height": 325
+      },
+      {
+        "x": 20,
+        "y": 2142.3125,
+        "width": 260,
+        "height": 146.0625
+      }
+    ],
+    "serviceBody": "13px",
+    "footerColumns": "70.75px 70.75px"
+  },
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "navFont": "12px",
+    "menuVisible": true,
+    "heroTitle": {
+      "x": 24,
+      "y": 145,
+      "width": 342,
+      "height": 130.53125
+    },
+    "heroPhoto": {
+      "x": 24,
+      "y": 546.53125,
+      "width": 342,
+      "height": 407.21875
+    },
+    "heroCopy": {
+      "x": 24,
+      "y": 303.53125,
+      "width": 342,
+      "height": 211
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 24,
+        "y": 1723.9375,
+        "width": 194.046875,
+        "height": 242.546875
+      },
+      {
+        "x": 234.046875,
+        "y": 1771.9375,
+        "width": 131.953125,
+        "height": 74.125
+      }
+    ],
+    "serviceBody": "13px",
+    "footerColumns": "70.75px 70.75px"
+  },
+  {
+    "width": 430,
+    "scrollWidth": 430,
+    "navFont": "12px",
+    "menuVisible": true,
+    "heroTitle": {
+      "x": 24,
+      "y": 145,
+      "width": 382,
+      "height": 138.6875
+    },
+    "heroPhoto": {
+      "x": 24,
+      "y": 554.6875,
+      "width": 382,
+      "height": 454.84375
+    },
+    "heroCopy": {
+      "x": 24,
+      "y": 311.6875,
+      "width": 382,
+      "height": 211
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 24,
+        "y": 1779.71875,
+        "width": 217.84375,
+        "height": 272.296875
+      },
+      {
+        "x": 257.84375,
+        "y": 1827.71875,
+        "width": 148.15625,
+        "height": 83.234375
+      }
+    ],
+    "serviceBody": "13px",
+    "footerColumns": "70.75px 70.75px"
+  },
+  {
+    "width": 640,
+    "scrollWidth": 640,
+    "navFont": "12px",
+    "menuVisible": true,
+    "heroTitle": {
+      "x": 24,
+      "y": 145,
+      "width": 592,
+      "height": 206.40625
+    },
+    "heroPhoto": {
+      "x": 24,
+      "y": 622.40625,
+      "width": 560,
+      "height": 666.796875
+    },
+    "heroCopy": {
+      "x": 24,
+      "y": 379.40625,
+      "width": 480,
+      "height": 211
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 24,
+        "y": 2010.015625,
+        "width": 323.796875,
+        "height": 404.734375
+      },
+      {
+        "x": 363.796875,
+        "y": 2058.015625,
+        "width": 220.203125,
+        "height": 123.703125
+      }
+    ],
+    "serviceBody": "13px",
+    "footerColumns": "70.75px 70.75px"
+  },
+  {
+    "width": 768,
+    "scrollWidth": 768,
+    "navFont": "10px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 38.40625,
+      "y": 173,
+      "width": 296.625,
+      "height": 115.1875
+    },
+    "heroPhoto": {
+      "x": 367.03125,
+      "y": 157,
+      "width": 362.5625,
+      "height": 431.703125
+    },
+    "heroCopy": {
+      "x": 38.40625,
+      "y": 328.1875,
+      "width": 296.625,
+      "height": 242.75
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 84,
+        "y": 1249.453125,
+        "width": 292,
+        "height": 365
+      },
+      {
+        "x": 392,
+        "y": 1329.453125,
+        "width": 292,
+        "height": 164.046875
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 820,
+    "scrollWidth": 820,
+    "navFont": "10px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 41,
+      "y": 173,
+      "width": 317.6875,
+      "height": 115.1875
+    },
+    "heroPhoto": {
+      "x": 390.6875,
+      "y": 157,
+      "width": 388.3125,
+      "height": 462.359375
+    },
+    "heroCopy": {
+      "x": 41,
+      "y": 328.1875,
+      "width": 317.6875,
+      "height": 217.5625
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 110,
+        "y": 1280.109375,
+        "width": 292,
+        "height": 365
+      },
+      {
+        "x": 418,
+        "y": 1360.109375,
+        "width": 292,
+        "height": 164.046875
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 900,
+    "scrollWidth": 900,
+    "navFont": "10px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 45,
+      "y": 173,
+      "width": 350.09375,
+      "height": 115.1875
+    },
+    "heroPhoto": {
+      "x": 427.09375,
+      "y": 157,
+      "width": 427.90625,
+      "height": 509.5
+    },
+    "heroCopy": {
+      "x": 45,
+      "y": 328.1875,
+      "width": 350.09375,
+      "height": 217.5625
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 150,
+        "y": 1274.0625,
+        "width": 292,
+        "height": 365
+      },
+      {
+        "x": 458,
+        "y": 1354.0625,
+        "width": 292,
+        "height": 164.046875
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 960,
+    "scrollWidth": 960,
+    "navFont": "11px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 48,
+      "y": 221.515625,
+      "width": 412,
+      "height": 134.53125
+    },
+    "heroPhoto": {
+      "x": 500,
+      "y": 157,
+      "width": 412,
+      "height": 490.5625
+    },
+    "heroCopy": {
+      "x": 48,
+      "y": 396.046875,
+      "width": 395,
+      "height": 223
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 504,
+        "y": 966.359375,
+        "width": 247.125,
+        "height": 308.90625
+      },
+      {
+        "x": 767.125,
+        "y": 1014.359375,
+        "width": 144.859375,
+        "height": 81.375
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 1024,
+    "scrollWidth": 1024,
+    "navFont": "11px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 51.203125,
+      "y": 234.171875,
+      "width": 440.796875,
+      "height": 143.5
+    },
+    "heroPhoto": {
+      "x": 532,
+      "y": 157,
+      "width": 440.796875,
+      "height": 524.859375
+    },
+    "heroCopy": {
+      "x": 51.203125,
+      "y": 417.671875,
+      "width": 395,
+      "height": 223
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 536,
+        "y": 976.015625,
+        "width": 265.28125,
+        "height": 331.59375
+      },
+      {
+        "x": 817.28125,
+        "y": 1024.015625,
+        "width": 155.5,
+        "height": 87.359375
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 1280,
+    "scrollWidth": 1280,
+    "navFont": "12px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 64,
+      "y": 271.859375,
+      "width": 540.796875,
+      "height": 181.84375
+    },
+    "heroPhoto": {
+      "x": 675.1875,
+      "y": 157,
+      "width": 540.8125,
+      "height": 643.953125
+    },
+    "heroCopy": {
+      "x": 64,
+      "y": 493.703125,
+      "width": 395,
+      "height": 228.390625
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 684.796875,
+        "y": 1073.171875,
+        "width": 299.703125,
+        "height": 374.625
+      },
+      {
+        "x": 1008.5,
+        "y": 1153.171875,
+        "width": 207.5,
+        "height": 116.5625
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  },
+  {
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navFont": "12px",
+    "menuVisible": false,
+    "heroTitle": {
+      "x": 72,
+      "y": 300.71875,
+      "width": 608.40625,
+      "height": 204.59375
+    },
+    "heroPhoto": {
+      "x": 759.59375,
+      "y": 157,
+      "width": 608.40625,
+      "height": 724.4375
+    },
+    "heroCopy": {
+      "x": 72,
+      "y": 545.3125,
+      "width": 395,
+      "height": 228.390625
+    },
+    "captionFont": "10px",
+    "institutionPhotos": [
+      {
+        "x": 770.390625,
+        "y": 1144.40625,
+        "width": 338.9375,
+        "height": 423.671875
+      },
+      {
+        "x": 1133.328125,
+        "y": 1224.40625,
+        "width": 234.671875,
+        "height": 131.828125
+      }
+    ],
+    "serviceBody": "14px",
+    "footerColumns": "none"
+  }
+]

@@ -2,6 +2,8 @@
 
 Prévia institucional com direção editorial, seis fotografias, serviços detalhados, galeria acessível e animações nativas. Logo original, Archivo e Manrope preservados. HTML gerado no build; conteúdo, contatos, detalhes e navegação essenciais continuam disponíveis sem JavaScript.
 
+Etapa atual: [motion e responsividade](docs/MOTION_RESPONSIVO.md), na branch `codex/motion-responsivo`, com composições por dispositivo, 60 alvos de entrada e variantes de imagem de 1000 px.
+
 ## Execução e edição
 
 - `node scripts/preview.mjs`: gera o build e serve http://127.0.0.1:4173.
@@ -33,7 +35,7 @@ Seis fotografias estão integradas: três materiais públicos da Vivace (duas pu
 
 As imagens oficiais foram selecionadas para esta prévia local da própria marca. Sua publicação definitiva depende de confirmação de autoria, cessão e atualidade; disponibilidade pública não foi tratada como licença documental. As fotos de banco têm [licença Pexels](https://www.pexels.com/license/) e não representam equipe, clientes ou espaço da Vivace. A imagem do LPF é uma representação de postura, sem afirmar demonstração da técnica.
 
-Variantes WebP de 700 e 1400 px, proporções explícitas, cinco imagens sob demanda e hero prioritário. A fachada do diretório conserva a resolução disponível de 639 × 359 px. Fotos não receberam retoques ou geração artificial; a logo foi preservada byte a byte.
+Variantes WebP de 700, 1000 e 1400 px, proporções explícitas, cinco imagens sob demanda e hero prioritário. A fachada do diretório conserva a resolução disponível de 639 × 359 px. Fotos não receberam retoques ou geração artificial; a logo foi preservada byte a byte.
 
 Manrope e Archivo são hospedadas localmente em WOFF2 latino; licenças SIL OFL acompanham os arquivos em `assets/`. Total das duas fontes: aproximadamente 60 KB.
 
@@ -51,6 +53,8 @@ Não houve deploy externo neste redesign. A integração remota GitHub/Vercel co
 
 `node scripts/validate.mjs` executa testes com o Playwright do runtime local. Para outro computador, instalar Playwright e adaptar o caminho documentado no script. A ferramenta não faz parte do site publicado.
 
-Resultados em `docs/validation.json`, relatório em `docs/VALIDACAO.md` e capturas em `docs/screenshots/`. Entrega atual em `docs/EVOLUCAO_VISUAL.md`. Histórico do redesign em `docs/REDESIGN.md` e do enriquecimento em `docs/ENRIQUECIMENTO.md`. Não há configuração de lint nem TypeScript neste projeto.
+Resultados em `docs/validation.json`, relatório em `docs/VALIDACAO.md` e capturas em `docs/screenshots/`. Entrega atual em `docs/MOTION_RESPONSIVO.md`. Fotografia e conteúdo em `docs/EVOLUCAO_VISUAL.md`. Histórico do redesign em `docs/REDESIGN.md` e do enriquecimento em `docs/ENRIQUECIMENTO.md`. Não há configuração de lint nem TypeScript neste projeto.
 
-Pesquisa e origens: `content/research.mjs`. A branch atual `codex/fotografia-servicos` parte de `codex/conteudo-experiencia` (7f97112), preservada para comparar a evolução. Use `git diff codex/conteudo-experiencia...codex/fotografia-servicos`. Não publique candidates/withheld como dados institucionais.
+Pesquisa e origens: `content/research.mjs`. A branch atual `codex/motion-responsivo` parte de `codex/fotografia-servicos` (3137c59), preservada para comparar a evolução. Use `git diff codex/fotografia-servicos...codex/motion-responsivo`. Não publique candidates/withheld como dados institucionais.
+
+`node scripts/validate-motion.mjs` verifica as novas interações, 24 larguras, fallbacks e o perfil de CPU/rede. `--profile-only` atualiza apenas o diagnóstico após uma rodada completa já registrada. A prévia comprime HTML/CSS/JS em Brotli ou gzip conforme o navegador, mantendo noindex e no-store.
